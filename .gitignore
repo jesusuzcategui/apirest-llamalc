@@ -1,1 +1,4 @@
 node_modules
+.well-known
+.htaccess
+yarn.lock
