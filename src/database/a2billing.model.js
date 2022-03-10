@@ -3,19 +3,14 @@ const a2billing = () => {
     
 };
 
-a2billing.updateUser = (idClient, ammout, result) => {
-    conx.query("UPDATE cc_card SET credit = ? WHERE id = ?", [ammout, idClient], (err, res) => {
+a2billing.findProducts = (result) => {
+    conx.query("SELECT * FROM productos WHERE STATEPRODUCTOS = 1", (err, resp) => {
         if(err){
             result(null, err);
             return;
         }
 
-        if(res.affectedRows === 0){
-            result({error: "No se ha actualizado la db"},null);
-            return;
-        }
-
-        result(null, res);
+        result(null, resp);
     });
 };
 

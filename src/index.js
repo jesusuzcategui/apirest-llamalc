@@ -22,15 +22,15 @@ App.get('/', (req, res) => {
     });
 });
 
-App.get('/a2billing/update', (request, result) => {
-    a2BillingModel.updateUser(35, 10000, (error, response) => {
+App.get('/v1/products', (request, result) => {    
+    a2BillingModel.findProducts( (error, response) => {
         if(error){
             result.status(400).json(error);
             return;
         }
 
         result.json(response);
-    });
+    } );
 });
 
 App.listen(process.env.PORT, () => {
