@@ -8,6 +8,7 @@ const WebpayPlus = require("transbank-sdk").WebpayPlus;
 const a2BillingModel = require('./database/a2billing.model');
 const WebpayController = require('./webpay');
 const ProductController = require('./products');
+const a2billingController = require('./a2billing');
 
 const App = express();
 
@@ -37,6 +38,7 @@ App.get('/v1/products', ProductController.getProducts);
 
 App.post('/v1/createPayment', WebpayController.createTransaction);
 App.post('/v1/returnPage', WebpayController.commitTransation);
+App.get('/v1/validateA2', a2billingController.testCurl);
 
 App.listen(process.env.PORT, () => {
     console.info(`Se ha establecido la conexion con el puerto ${process.env.PORT}`);
